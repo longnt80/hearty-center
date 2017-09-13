@@ -1,14 +1,11 @@
 /*
   You can use import statements to include partials:
  */
-@import "imports/reset.css";
-
-
-/*
-  Or add your statements here:
- */
-body{
-  font-family: sans-serif;
-  font-size: 1em;
-  text-align: center;
-}
+@import "vendors/bootstrap/bootstrap-reboot.min.css";
+@import "vendors/bootstrap/bootstrap-grid.min.css";
+@import "base/_variables";
+@import "base/_mixins";
+@import "base/_global";
+@import "modules/_header-info";
+@import "modules/_header";
+@import "modules/_footer";

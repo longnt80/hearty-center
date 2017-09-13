@@ -8,6 +8,14 @@ import cssnext from "postcss-cssnext";
 import BrowserSync from "browser-sync";
 import webpack from "webpack";
 import webpackConfig from "./webpack.conf";
+import mixins from "postcss-mixins";
+import cssnested from "postcss-nested";
+import cssvars from "postcss-simple-vars";
+import hexrgba from "postcss-hexrgba";
+import autoprefixer from "autoprefixer";
+import modernizr from "gulp-modernizr";
+
+
 
 const browserSync = BrowserSync.create();
 
@@ -26,13 +34,28 @@ gulp.task("build-preview", ["css", "js"], (cb) => buildSite(cb, hugoArgsPreview,
 // Compile CSS with PostCSS
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
-    .pipe(postcss([cssImport({from: "./src/css/main.css"}), cssnext()]))
+    .pipe(postcss([cssImport({from: "./src/css/main.css"}), mixins, cssnested, cssvars, hexrgba, autoprefixer]))
+    .on('error', function(errorInfo) {
+      console.log(errorInfo.toString());
+      this.emit('end');
+    })
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream())
 ));
 
+// Detect features with Modernizr
+gulp.task('modernizr', function() {
+  return gulp.src(['./src/css/main.css', './src/js/app.js'])
+    .pipe(modernizr({
+      "options": [
+        "setClasses"
+      ]
+    }))
+    .pipe(gulp.dest('../dist/js/'));
+});
+
 // Compile Javascript
-gulp.task("js", (cb) => {
+gulp.task("js", ['modernizr'], (cb) => {
   const myConfig = Object.assign({}, webpackConfig);
 
   webpack(myConfig, (err, stats) => {

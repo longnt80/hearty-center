@@ -1,0 +1,114 @@
+.header-info {
+  background-color: #333;
+  color: #FFF;
+  font-size: 0.8rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+
+  @mixin md {
+    width: auto;
+    position: static;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+
+    @mixin md {
+      height: 36px;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+
+
+    &__phone-number__icon,
+    &__email__icon {
+      margin-right: 1rem;
+      color: #FFF;
+      display: inline-block;
+      font-size: 1.8rem;
+      transition: transform .3s ease-out;
+
+      @mixin md {
+        margin-right: 2px;
+        font-size: 0.8rem;
+      }
+
+      &:hover,
+      &:focus {
+        transform: scale(1.2);
+        color: #FFF;
+        @mixin md {
+          transform: scale(1);
+        }
+      }
+    }
+
+    &__phone-number__string,
+    &__email__string {
+      display: none;
+      color: #ece891;
+
+      @mixin md {
+        display: inline;
+        margin-right: 10px;
+      }
+
+      &:hover {
+        color: #ece891;
+        text-decoration: underline;
+      }
+    }
+
+    &__email__desc {
+      display: none;
+      color: #BBB;
+      @mixin md {
+        display: inline;
+      }
+    }
+
+  }
+
+  &__setting {
+    display: flex;
+    align-items: center;
+
+    &__mobile-toggle {
+      margin-right: 1rem;
+      color: #FFF;
+      font-size: 1.8rem;
+
+      @mixin md {
+        display: none;
+      }
+    }
+
+    &__language {
+      color: #FFF;
+      font-size: 1.8rem;
+
+      @mixin md {
+        font-size: 0.8rem;
+      }
+    }
+
+    &__mobile-toggle,
+    &__language {
+      &:hover,
+      &:focus {
+        transform: scale(1.2);
+        color: #FFF;
+        @mixin md {
+          transform: scale(1);
+        }
+      }
+    }
+  }
+
+}
