@@ -1,0 +1,18 @@
+.page-title {
+  background-color: $mainGreen;
+  padding: 10px 0;
+
+  @mixin md {
+    padding: 20px 0;
+  }
+
+  &__heading {
+    margin-bottom: 0;
+    color: #FFF;
+    font-size: 1.6rem;
+
+    @mixin md {
+      font-size: 2rem;
+    }
+  }
+}

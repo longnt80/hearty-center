@@ -7,3 +7,21 @@ title = "Hearty Center"
 # See configuration options for more details:
 # https://gohugo.io/getting-started/configuration/#toml-configuration
 disableKinds = ["RSS", "taxonomy", "taxonomyTerm"]
+
+[Params]
+  phone = "+61 2 9786 8717"
+  email = "info@heartycenter.com.au"
+  headerMsg = "We will reply to your emails within 2 hours from 10:00am to 4:00pm daily"
+  copyright = "All rights reserved by Hearty Center. © 2017."
+  address = "5 Bega Place, Georges Hall, NSW 2198, Australia."
+  disclaimer = "Hearty Center is not a medical facility and we do not administer any treatments, our approach is strictly lifestyle-based. We do not claim to have the cure for cancer. Our mission is to creating the best quality of nourishing for everybody enduring with cancer."
+  logo = "img/logo.png"
+  logoHiDpi = "img/logo-hi-dpi.png"
+  # favicon = "img/favicon.ico"
+
+
+[[menu.main]]
+  name = "About Us"
+  weight = 1
+  identifier = "about-us"
+  url = "#"

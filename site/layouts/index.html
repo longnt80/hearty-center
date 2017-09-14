@@ -1,14 +1,11 @@
-{{ partial "header" . }}
-
-<div class="container">
-  <h1>Hugo with Gulp, PostCSS and Webpack</h1>
-
-  <h2>This is great, alright!</h2>
-
-
-  <p>
-    Hooray 🎉 - you've built this with <a href="https://github.com/netlify/victor-hugo">Victor-Hugo</a>!
-  </p>
-</div>
-
-{{ partial "footer" . }}
+{{ define "main" }}
+    <section>
+      <div class="container">
+        {{ if $.Param "hero.enable" }}
+          <h2>{{ $.Param "hero.title" }}</h2>
+          <h3>{{ $.Param "hero.subtitle" }}</h3>
+          <a href="{{ $.Param "hero.CTA" }}">Learn More</a>
+        {{end}}
+      </div>
+    </section>
+{{end}}

@@ -5,6 +5,7 @@
   position: fixed;
   width: 100%;
   top: 0;
+  z-index: 2;
 
   @mixin md {
     width: auto;
@@ -32,19 +33,27 @@
       color: #FFF;
       display: inline-block;
       font-size: 1.8rem;
-      transition: transform .3s ease-out;
 
       @mixin md {
         margin-right: 2px;
         font-size: 0.8rem;
       }
 
+
       &:hover,
       &:focus {
-        transform: scale(1.2);
         color: #FFF;
         @mixin md {
           transform: scale(1);
+        }
+      }
+
+      &.active {
+        transform: scale(1.2);
+        color: $mainYellow;
+
+        &:hover {
+          color: $mainYellow;
         }
       }
     }
@@ -80,30 +89,40 @@
     align-items: center;
 
     &__mobile-toggle {
-      margin-right: 1rem;
       color: #FFF;
       font-size: 1.8rem;
 
       @mixin md {
         display: none;
       }
+
+      &.active {
+        transform: scale(1.2);
+        color: $mainYellow;
+
+        &:hover {
+          color: $mainYellow;
+        }
+      }
     }
 
     &__language {
+      margin-right: 1rem;
       color: #FFF;
       font-size: 1.8rem;
 
       @mixin md {
+        margin-right: 0;
         font-size: 0.8rem;
       }
     }
 
     &__mobile-toggle,
     &__language {
-      &:hover,
-      &:focus {
-        transform: scale(1.2);
+
+      &:hover {
         color: #FFF;
+
         @mixin md {
           transform: scale(1);
         }

@@ -14,6 +14,7 @@ import cssvars from "postcss-simple-vars";
 import hexrgba from "postcss-hexrgba";
 import autoprefixer from "autoprefixer";
 import modernizr from "gulp-modernizr";
+import sourcemaps from "gulp-sourcemaps";
 
 
 
@@ -34,11 +35,13 @@ gulp.task("build-preview", ["css", "js"], (cb) => buildSite(cb, hugoArgsPreview,
 // Compile CSS with PostCSS
 gulp.task("css", () => (
   gulp.src("./src/css/*.css")
-    .pipe(postcss([cssImport({from: "./src/css/main.css"}), mixins, cssnested, cssvars, hexrgba, autoprefixer]))
+    .pipe( sourcemaps.init() )
+    .pipe(postcss([cssImport({from: "./src/css/main.css"}), mixins, cssnested, cssvars, hexrgba]))
     .on('error', function(errorInfo) {
       console.log(errorInfo.toString());
       this.emit('end');
     })
+    .pipe( sourcemaps.write('.') )
     .pipe(gulp.dest("./dist/css"))
     .pipe(browserSync.stream())
 ));

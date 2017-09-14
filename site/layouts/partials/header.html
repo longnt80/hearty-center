@@ -2,12 +2,15 @@
 <html lang="{{ $.Site.Language.Lang }}">
   <head>
     <script src="https://use.fontawesome.com/d56c7a9c58.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i|Quicksand:500&amp;subset=vietnamese" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="{{ $.Site.BaseURL }}">
     <title>{{ $.Site.Title }}</title>
-    <link rel="stylesheet" href="css/main.css"/>
+    <base href="{{ $.Site.BaseURL }}">
+    {{ partial "css" . }}
+
+    {{ partial "js" . }}
+
+    {{ .Hugo.Generator }}
   </head>
   <body>
 
@@ -16,17 +19,17 @@
           <div class="header-info__wrapper">
             <div class="header-info__contact">
               <div class="header-info__contact__phone-number">
-                <a class="header-info__contact__phone-number__icon" href="tel:+61297868717"><i class="fa fa-phone" aria-hidden="true"></i></a>
-                <a class="header-info__contact__phone-number__string" href="tel:+61297868717">+61 2 9786 8717</a>
+                <a class="header-info__contact__phone-number__icon" href="tel:{{ .Site.Params.phone }}"><i class="fa fa-phone" aria-hidden="true"></i></a>
+                <a class="header-info__contact__phone-number__string" href="tel:+61297868717">{{ .Site.Params.phone }}</a>
               </div>
               <div class="header-info__contact__email">
-                <a class="header-info__contact__email__icon" href="mailto:info@heartycenter.com.au"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-                <a class="header-info__contact__email__string" href="mailto:info@heartycenter.com.au">info@heartycenter.com.au</a><span class="header-info__contact__email__desc">We will reply to your emails within 2 hours from 10:00am to 4:00pm daily</span>
+                <a class="header-info__contact__email__icon" href="mailto:{{ .Site.Params.email }}"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                <a class="header-info__contact__email__string" href="mailto:{{ .Site.Params.email }}">{{ .Site.Params.email }}</a><span class="header-info__contact__email__desc">{{ .Site.Params.headerMsg }}</span>
               </div>
             </div>
             <div class="header-info__setting">
-              <a class="header-info__setting__mobile-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
               <a class="header-info__setting__language" href="#"><i class="fa fa-globe" aria-hidden="true"></i></a>
+              <a class="header-info__setting__mobile-toggle" href="#"><i class="fa fa-bars" aria-hidden="true"></i></a>
             </div>
           </div>
         </div>
@@ -35,24 +38,11 @@
     <section class="header">
         <div class="container">
           <div class="logo">
-            <img sizes="150px" srcset="/img/logo.png 150w, /img/logo-hi-dpi.png 400w" alt="Hearty Center">
+            <a href="{{ .Site.BaseURL }}" title="Hearty Center"><img sizes="150px" srcset="{{ .Site.Params.logo }} 150w, {{ .Site.Params.logoHiDpi }} 400w" alt="Hearty Center"></a>
           </div>
-          <nav>
-            <ul>
-              <li class="has-sub"><a href="#">About Us</a>
-                <ul>
-                  <li><a href="#">Our Founder</a></li>
-                  <li><a href="#">Our Approach</a></li>
-                  <li><a href="#">Our Unique</a></li>
-                </ul>
-              </li>
-              <li><a href="#">PowerSlim</a></li>
-              <li><a href="#">Food</a></li>
-              <li><a href="#">Meditation</a></li>
-              <li><a href="#">FAQs</a></li>
-              <li><a href="#">News</a></li>
-              <li><a href="#">Booking</a></li>
-            </ul>
-          </nav>
+
+          {{ partial "navigation" . }}
+
+
         </div>
     </section>
