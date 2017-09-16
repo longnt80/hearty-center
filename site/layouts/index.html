@@ -1,11 +1,39 @@
 {{ define "main" }}
-    <section>
+
+    {{ if .Params.hero }}
+    <section id="hero">
       <div class="container">
-        {{ if $.Param "hero.enable" }}
-          <h2>{{ $.Param "hero.title" }}</h2>
-          <h3>{{ $.Param "hero.subtitle" }}</h3>
-          <a href="{{ $.Param "hero.CTA" }}">Learn More</a>
-        {{end}}
+        <h2>{{ .Params.hero.title }}</h2>
+        <h3>{{ .Params.hero.subtitle }}</h3>
+        <a href="{{ .Params.hero.CTA }}">Learn More</a>
       </div>
     </section>
+    {{end}}
+
+    {{ if .Params.retreatSection }}
+    <section>
+      <div class="container">
+          {{ .Params.retreatSection.title }}
+          {{ .Params.retreatSection.note }}
+          {{ range .Params.retreatSection.retreats }}
+          {{ $year := .retreat.year }}
+          <ul>
+            <li>{{ .retreat.year }}
+              <ul>
+                {{ range .retreat.seasons }}
+                <li>
+                  <p>{{ .season.name }} retreat</p>
+                  <p>
+                    {{ dateFormat "Mon Jan 2" .season.from }} &#45; {{ dateFormat "Mon Jan 2 of 2006" .season.to }}
+                  </p>
+                </li>
+                {{end}}
+              </ul>
+            </li>
+          </ul>
+          {{end}}
+      </div>
+    </section>
+    {{end}}
+
 {{end}}
