@@ -18,7 +18,8 @@ nav {
   @mixin md {
     padding-top: 0;
     font-size: 1.2rem;
-    position: static;
+    position: relative;
+    z-index: 1;
     transform: scaleY(1);
     opacity: 1;
     box-shadow: none;
@@ -138,7 +139,6 @@ nav {
 
     @mixin md {
       opacity: 1;
-
     }
   }
 
