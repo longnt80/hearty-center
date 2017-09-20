@@ -1,0 +1,4 @@
+backend:
+  name: github
+  repo: longnt80/hearty-center # Path to your Github repository
+  branch: master # Branch to update
