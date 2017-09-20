@@ -1,39 +1,92 @@
 {{ define "main" }}
 
     {{ if .Params.hero }}
-    <section id="hero">
+    <div class="section hero">
       <div class="container">
-        <h2>{{ .Params.hero.title }}</h2>
-        <h3>{{ .Params.hero.subtitle }}</h3>
-        <a href="{{ .Params.hero.CTA }}">Learn More</a>
+        <div class="row">
+          <div class="col-md order-2 order-md-1">
+            <h1 class="hero__heading">{{ .Params.hero.title }}</h1>
+            <p class="hero__desc">{{ .Params.hero.subtitle }}</p>
+            <a class="btn btn--yellow" href="{{ .Params.hero.cta }}">Learn More</a>
+          </div>
+          <div class="col-md order-1 order-md-2 no-padding-on-mobile">
+            <picture>
+              <source srcset="img/ps-illu.jpg" media="(min-width: 992px)">
+              <source srcset="img/ps-illu-v.jpg" media="(min-width: 768px)">
+              <img class="hero__image img-fluid" srcset="img/ps-illu.jpg" alt="PowerSlim Capsule">
+            </picture>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{end}}
+
+    {{ if .Params.retreatSection }}
+    <section class="section retreat">
+      <div class="container">
+            <div class="row">
+              <div class="col">
+                <h1 class="retreat__heading retreat__heading--no-margin-b">{{ .Params.retreatSection.title }}</h1>
+                <p><em>{{ .Params.retreatSection.note }}</em></p>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              {{ range .Params.retreatSection.retreats }}
+              {{ $year := .retreat.year }}
+              <div class="col-md-4">
+                <section class="retreat__season">
+                  <h1 class="retreat__season__heading">Schedule for {{ .retreat.year }}</h1>
+                  {{ range .retreat.seasons }}
+                  <dl>
+                    <dt>{{ .season.name }} retreat</dt>
+                    <dd>{{ dateFormat "Mon Jan 2" .season.from }} &#45; {{ dateFormat "Mon Jan 2 of 2006" .season.to }}</dd>
+                  </dl>
+                  {{end}}
+                </section>
+              </div>
+              {{end}}
+            </div>
+            <div class="row">
+              <div class="col"><a class="btn btn--green" href="{{ .Params.hero.cta }}">Book your retreat</a></div>
+            </div>
       </div>
     </section>
     {{end}}
 
-    {{ if .Params.retreatSection }}
-    <section>
+    <section class="section section--green-bg">
       <div class="container">
-          {{ .Params.retreatSection.title }}
-          {{ .Params.retreatSection.note }}
-          {{ range .Params.retreatSection.retreats }}
-          {{ $year := .retreat.year }}
-          <ul>
-            <li>{{ .retreat.year }}
-              <ul>
-                {{ range .retreat.seasons }}
-                <li>
-                  <p>{{ .season.name }} retreat</p>
-                  <p>
-                    {{ dateFormat "Mon Jan 2" .season.from }} &#45; {{ dateFormat "Mon Jan 2 of 2006" .season.to }}
-                  </p>
-                </li>
-                {{end}}
-              </ul>
-            </li>
-          </ul>
-          {{end}}
+        <div class="row justify-content-center">
+          <div class="col-sm-8">
+            <h1 class="section__heading section__heading--center">Why we specialize in cancer without surgery, radiation therapy, chemotherapy, and drugs</h1>
+            <p>The words of author Roger Mason tell us our Western diet and lifestyles are the cause of the rise of cancer in our society. “There will never be a medical cure for cancer. The real cure has always been getting in harmony with natural laws. The phoney “war on cancer” has done nothing but waste money on allopathic studies, covering up the symptoms with radiation, surgery, and drugs. The cancer rates continue to rise, year after year. This is neither random nor caused by events beyond our control. Certainly there are minor genetic and environmental influences, but our diet and lifestyle are the basic causes. Diseases are a wake-up call from Nature for us to change our direction. This is not a “war” or a “fight” at all. When you are ill, Nature is telling you something is wrong, and you need to correct it. This is not some kind of battle at all, as we all are told. Most people eat twice the calories we need, five times the fat we need, twice the protein we need, and 160 pounds of various sugars we don’t need at all. God knows how many toxic prescription drugs, and how much coffee, alcohol, and cigarettes we use. Add an endless variety of refined foods full of chemicals, preservatives, additives, and colourings we swill down. Then we wonder why we have such high rates of disease!” – *Roger Mason*</p>
+            <h2>With this philosophy we will assist cancer patients:</h2>
+
+            <ul>
+              <li>Live happily and healthfully at our superb Hearty Centre for up to three months’ duration.</li>
+              <li>Reduce their need for daily medicine.</li>
+              <li>Relieve incurable diseases.</li>
+              <li>Manage their diseases through diet and lifestyle.</li>
+              <li>Keep costs low.</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
-    {{end}}
+
+    <section class="section">
+      <div class="container">
+        <div class="row justify-content-center align-items-center">
+          <div class="col-12">
+            <h1 class="section__heading section__heading--center">Our Approach</h1>
+          </div>
+          <div class="col-md-6">
+            <img class="img-fluid" src="img/approach.png" alt="Our Approach">
+          </div>
+          <div class="col-md-6 text-center">
+            <a class="btn btn--green" href="/our-approach/">Learn more</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
 {{end}}

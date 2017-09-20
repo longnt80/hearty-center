@@ -4,10 +4,12 @@ date: 2017-09-14
 draft: false
 
 hero:
-  enable: true
-  title: "This is the title"
-  subtitle: "This is the subtitle"
-  cta: "/our-founder/"
+  title: |
+    Perfect atmosphere for exercise
+    and accelerated release toxic from your body
+  subtitle: |
+    PowerSlim Active gives you maximum release toxic support with immediate results. Exercise without soreness, increasing physical fitness by capturing the benefits of the ionization and infrared. Our patented method harnesses the synergy of infrared radiation and ionization which is coupled with balancing movement.
+  cta: "/powerslim/"
 
 retreatSection:
   title: "12 Weeks Cancer Essentials Retreat"

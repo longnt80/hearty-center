@@ -1,10 +1,12 @@
 {{ partial "header" . }}
 
+{{ if not .IsHome }}
 <section class="page-title">
   <div class="container">
     <h1 class="page-title__heading">{{ .Title }}</h1>
   </div>
 </section>
+{{end}}
 
 
 <main aria-role="main">

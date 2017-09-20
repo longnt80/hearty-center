@@ -1,0 +1,25 @@
+.section {
+  padding: 50px 0;
+
+  &--no-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &--green-bg {
+    background-color: $mainGreen;
+    color: #FFF;
+  }
+
+  &__heading {
+    margin-bottom: 2rem;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}
+
+.section > section {
+  padding: 0;
+}

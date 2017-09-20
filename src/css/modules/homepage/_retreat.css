@@ -1,0 +1,51 @@
+.retreat {
+  text-align: center;
+
+  &__heading {
+    font-weight: 400;
+    color: $mainGreen;
+
+    &--no-margin-b {
+      margin-bottom: 0;
+    }
+  }
+
+  &__season {
+    margin-bottom: 40px;
+
+
+    &__heading {
+      font-size: 1.2rem;
+      color: $mainGreen;
+    }
+  }
+
+  div[class^="col"] {
+
+    @mixin sm {
+      position: relative;
+
+      .retreat__season {
+        &::after {
+          display: block;
+          content: "";
+          width: 1px;
+          height: 50%;
+          background-color: $mainGreen;
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+
+      &:last-child {
+
+        .retreat__season::after {
+          display: none;
+        }
+      }
+    }
+
+  }
+}

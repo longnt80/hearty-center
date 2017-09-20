@@ -91,6 +91,8 @@
     &__mobile-toggle {
       color: #FFF;
       font-size: 1.8rem;
+      transform: scale(1);
+      transition: all .3s ease-out;
 
       @mixin md {
         display: none;
