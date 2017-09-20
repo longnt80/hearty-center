@@ -2,6 +2,6 @@ backend:
   name: github
   repo: longnt80/hearty-center # Path to your Github repository
   branch: master # Branch to update
-  
+
 media_folder: "static/img/uploads"
-public_folder: "/images/uploads"
+public_folder: "/img/uploads"
